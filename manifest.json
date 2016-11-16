@@ -215,7 +215,8 @@
 				"resources": [
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"js/mui.min.js"
+					"js/mui.min.js",
+					"js/app/menu.js"
 				],
 				"refer": [
 					"views/about.html",

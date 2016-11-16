@@ -118,6 +118,7 @@ function getDatabase() {
 }
 
 function initDatabase(){
+	console.log("init Database ... ");
     var db = getDatabase()
     db.transaction(function(tx){
     	tx.executeSql("CREATE TABLE IF NOT EXISTS testTable (name TEXT, value INT, primary key (name))");
