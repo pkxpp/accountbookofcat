@@ -1,0 +1,40 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"js/app/index.js",
+			"css/style.css",
+			"js/mui.poppicker.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"js/mui.picker.js",
+			"js/city.data.js",
+			"js/city.data-3.js"
+		],
+		"refer": [
+			"views/menu.html"
+		]
+	},
+	"views/menu.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.min.js"
+		],
+		"refer": [
+			"views/about.html",
+			"views/echarts.html"
+		]
+	},
+	"views/echarts.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"libs/echarts-all.js",
+			"js/app/index.js"
+		]
+	}
+}
