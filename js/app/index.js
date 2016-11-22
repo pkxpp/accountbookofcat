@@ -30,7 +30,7 @@ mui.plusReady(function(){
 	main.addEventListener('maskClick', opMenu);
 	mui.menu = opMenu;
 	
-	tstPicker();
+//	tstPicker();
 	// 退出
 //	mui.back = function(){
 //		if($('.adda').is(':hidden')){
@@ -51,6 +51,7 @@ function opMenu(){
 	}else{
 		openMenu();
 	}
+	loadValue();
 }
 
 function openMenu(){
@@ -114,25 +115,60 @@ function getDatabase() {
 	//@参数3：对数据库的描述
 	//@参数4：设置数据的大小
 	//@参数5：回调函数
-     return openDatabase("testdb", "1.0", "page", 1024*1024);
+    return openDatabase("accountdb", "1.0", "localdb", 1024*1024);
 }
 
 function initDatabase(){
 	console.log("init Database ... ");
     var db = getDatabase()
     db.transaction(function(tx){
-    	tx.executeSql("CREATE TABLE IF NOT EXISTS testTable (name TEXT, value INT, primary key (name))");
+    	var tableName = "account";
+    	var cols = [];
+    	cols["Genre"] = "INT";
+    	cols["Detail"] = "INT";
+    	cols["AccountGenre"] = "INT";
+    	cols["AccountDetail"] = "INT";
+    	cols["Value"] = "INT";
+    	cols["Desc"] = "TEXT";
+    	cols["Time"] = "TEXT";
+    	var sqlCols = "";
+    	var i = 1;
+    	
+    	for (key in cols){
+    		var typeStr = cols[key];
+    		sqlCols += key + " " + typeStr;
+    		if (i < 7)
+    			sqlCols += ", ";
+    		++i;
+    	}
+    	
+    	sqlCols += ");";
+//  	sqlCols += " primary key(Genre, Detail, AccountGenre, AccountDetail))";
+
+    	var sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (" + sqlCols;
+    	console.log(sql);
+    	var result = tx.executeSql(sql);
+    	console.log("result = " + result);
+    	
+//  	result = tx.executeSql("CREATE TABLE IF NOT EXISTS testTable (name TEXT, value INT, primary key (name))");
+//  	console.log("result = " + result);
     });
 }
 
-function insert(cname, cvalue){
+function insert(genre, detail, accountGenre, accountDetail, value, desc){
     var db = getDatabase();
     var res = true;
     db.transaction(function(tx){
-        tx.executeSql('INSERT INTO testTable VALUES (?,?);',[cname, cvalue],
+//  	new Date().getTime()
+    	var data = [genre, detail, accountGenre, accountDetail, value, desc, "time"];
+    	console.log(data);
+        tx.executeSql('INSERT INTO account VALUES (?,?,?,?,?,?,?);', data,
+//      tx.executeSql('INSERT INTO testTable VALUES (?,?);', ["11", 10],
 	        function(tx,results){
+	        	console.log("insert Success!")
 	        },function (tx, error){
 	            res = false;
+	            console.log("insert error!")
 	        }
         );
     })
@@ -209,12 +245,14 @@ function loadValue(){
 	console.log("loadValue ... ");
     var db = getDatabase();
     db.transaction(function(tx){
-    	tx.executeSql('SELECT * FROM testTable', [], 
+    	tx.executeSql('SELECT * FROM account', [], 
     	function (tx, results) {
-    		var htmlList = new Array();
+//  		var htmlList = new Array();
 		    var len = results.rows.length;
+		    console.log("len = " + len);
 		    for (i = 0; i < len; i++){
-				console.log(results.rows.item(i).name + ", " + results.rows.item(i).value);
+				console.log(results.rows.item(i).Genre + ", " + results.rows.item(i).Detail + ", " + 
+				results.rows.item(i).Value + ", " + results.rows.item(i).Desc);
 		    }
 		},
     	function (tx,error){
@@ -228,9 +266,9 @@ function clearTable()
 {
 	var db = getDatabase();
     db.transaction(function(tx){
-    	tx.executeSql('DELETE FROM testTable', [], 
+    	tx.executeSql('DELETE FROM account', [], 
     	function (tx, results) {
-    		var htmlList = new Array();
+    		console.log("Delete Table Success!" + results.rows.length)
 		    var len = results.rows.length;
 		    for (i = 0; i < len; i++){
 				console.log(results.rows.item(i).name + ", " + results.rows.item(i).value);
@@ -241,19 +279,23 @@ function clearTable()
     	});
 		
 	})
+    
+    deleteTable();
 }
 
 function deleteTable()
 {
 	var db = getDatabase();
     db.transaction(function(tx){
-    	tx.executeSql('DROP testTable', [], 
+    	tx.executeSql('DROP TABLE account'
+    	, [],
     	function (tx, results) {
-
+			console.log("Drop Table Success!")
 		},
     	function (tx,error){
-
-    	});
+			console.log("Drop Table Error!")
+    	}
+    	);
 		
 	})
 }
@@ -306,30 +348,107 @@ function tstAddData()
 {
 	console.log("tstAddData .....................");
 	
+//	大类:
+//	0: 一般
+//	
+//	细类:
+//	0: 一般
+//	
+//	账户大类:
+//	0: 现金
+//		细类:
+//		0: 现金
+//	1: 金融账户
+//		细类:
+//		0: 银行卡
+//		1: 存折
+//		2: 信用卡
+//		3: 公积金
+//	2: 虚拟账户
+//		细类: 
+//		0: 支付宝
+//		1: 余额宝
+//		2: 微信钱包
+//	3: 
+	
 	var arrData = [
+		// 现金
 		{
-			value: 335,
-			name: '直接访问'
+			genre: 0,
+			detail: 0,
+			agenre: 0,
+			adetail: 0,
+			value: 270,
+			desc: '现金'
+		}, 
+		// 交行
+		{
+			genre: 0,
+			detail: 0,
+			agenre: 1,
+			adetail: 0,
+			value: 5149.87,
+			desc: '交行'
 		}, 
 		{
-			value: 310,
-			name: '邮件营销'
+			genre: 0,
+			detail: 0,
+			agenre: 1,
+			adetail: 0,
+			value: 1008.57,
+			desc: '建行'
 		}, 
 		{
-			value: 234,
-			name: '联盟广告'
+			genre: 0,
+			detail: 0,
+			agenre: 1,
+			adetail: 0,
+			value: 273,
+			desc: '工行'
+		},
+		{
+			genre: 0,
+			detail: 0,
+			agenre: 1,
+			adetail: 2,
+			value: -2278.10,
+			desc: '信用卡'
 		}, 
 		{
-			value: 135,
-			name: '视频广告'
+			genre: 0,
+			detail: 0,
+			agenre: 2,
+			adetail: 1,
+			value: 12297.36,
+			desc: '余额宝'
 		}, 
 		{
-			value: 1548,
-			name: '搜索引擎'
+			genre: 0,
+			detail: 0,
+			agenre: 2,
+			adetail: 2,
+			value: 469,
+			desc: '微信钱包'
+		}, 
+		{
+			genre: 0,
+			detail: 0,
+			agenre: 1,
+			adetail: 3,
+			value: 5328,
+			desc: '公积金'
 		}
 	]
 	for (var i = 0; i < arrData.length; i++)
 	{
-		insert(arrData[i].name, arrData[i].value);
+		var genre = arrData[i].genre;
+		var detail = arrData[i].detail; 
+		var accounttGenre = arrData[i].agenre;
+		var accountDetail = arrData[i].adetail;
+		var value = arrData[i].value;
+		var desc = arrData[i].desc;
+		insert(genre, detail, accounttGenre, accountDetail, value, desc);
 	}
 }
+
+
