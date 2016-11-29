@@ -130,7 +130,7 @@ function initDatabase(){
     	cols["AccountDetail"] = "INT";
     	cols["Value"] = "INT";
     	cols["Desc"] = "TEXT";
-    	cols["Time"] = "TEXT";
+    	cols["Time"] = "INT";
     	var sqlCols = "";
     	var i = 1;
     	
@@ -159,11 +159,11 @@ function insert(genre, detail, accountGenre, accountDetail, value, desc){
     var db = getDatabase();
     var res = true;
     db.transaction(function(tx){
-//  	new Date().getTime()
-    	var data = [genre, detail, accountGenre, accountDetail, value, desc, "time"];
+    	var time = new Date().getTime();
+    	var data = [genre, detail, accountGenre, accountDetail, value, desc, time];
     	console.log(data);
+//  	console.log(typeof time);
         tx.executeSql('INSERT INTO account VALUES (?,?,?,?,?,?,?);', data,
-//      tx.executeSql('INSERT INTO testTable VALUES (?,?);', ["11", 10],
 	        function(tx,results){
 	        	console.log("insert Success!")
 	        },function (tx, error){
@@ -251,7 +251,7 @@ function loadValue(){
 		    var len = results.rows.length;
 		    console.log("len = " + len);
 		    for (i = 0; i < len; i++){
-				console.log(results.rows.item(i).Genre + ", " + results.rows.item(i).Detail + ", " + 
+				console.log(results.rows.item(i).AccountGenre + ", " + results.rows.item(i).AccountDetail + ", " + 
 				results.rows.item(i).Value + ", " + results.rows.item(i).Desc);
 		    }
 		},
@@ -370,6 +370,16 @@ function tstAddData()
 //		1: 余额宝
 //		2: 微信钱包
 //	3: 
+//账户细类:
+//0: 现金
+//1: 银行卡
+//2: 存折
+//3: 信用卡
+//4: 公积金
+//5: 支付宝
+//6: 余额宝
+//7: 微信钱包
+
 	
 	var arrData = [
 		// 现金
@@ -386,7 +396,7 @@ function tstAddData()
 			genre: 0,
 			detail: 0,
 			agenre: 1,
-			adetail: 0,
+			adetail: 1,
 			value: 5149.87,
 			desc: '交行'
 		}, 
@@ -394,7 +404,7 @@ function tstAddData()
 			genre: 0,
 			detail: 0,
 			agenre: 1,
-			adetail: 0,
+			adetail: 1,
 			value: 1008.57,
 			desc: '建行'
 		}, 
@@ -402,7 +412,7 @@ function tstAddData()
 			genre: 0,
 			detail: 0,
 			agenre: 1,
-			adetail: 0,
+			adetail: 1,
 			value: 273,
 			desc: '工行'
 		},
@@ -410,14 +420,14 @@ function tstAddData()
 			genre: 0,
 			detail: 0,
 			agenre: 1,
-			adetail: 2,
+			adetail: 3,
 			value: -2278.10,
 			desc: '信用卡'
 		}, 
 		{
 			genre: 0,
 			detail: 0,
-			agenre: 2,
+			agenre: 6,
 			adetail: 1,
 			value: 12297.36,
 			desc: '余额宝'
@@ -426,7 +436,7 @@ function tstAddData()
 			genre: 0,
 			detail: 0,
 			agenre: 2,
-			adetail: 2,
+			adetail: 7,
 			value: 469,
 			desc: '微信钱包'
 		}, 
@@ -434,7 +444,7 @@ function tstAddData()
 			genre: 0,
 			detail: 0,
 			agenre: 1,
-			adetail: 3,
+			adetail: 4,
 			value: 5328,
 			desc: '公积金'
 		}
@@ -451,4 +461,18 @@ function tstAddData()
 	}
 }
 
-
+// 账户细类:
+function getAccountDetailName(ID)
+{
+	var arrName = [
+		"现金",			// 0: 现金,
+		"银行卡",			// 1: 银行卡,
+		"存折",			// 2: 存折,
+		"信用卡",			// 3: 信用卡,
+		"公积金",			// 4: 公积金,
+		"支付宝",			// 5: 支付宝,
+		"余额宝",			// 6: 余额宝,
+		"微信钱包"			// 7: 微信钱包
+	];
+	return arrName[ID];
+}

@@ -35,7 +35,8 @@
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"libs/echarts-all.js",
-			"js/app/index.js"
+			"js/app/index.js",
+			"js/app/echarts.js"
 		]
 	}
 }
