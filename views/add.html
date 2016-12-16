@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>add</title>
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/app/add.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">记账</h1>
+		</header>
+		<!-- mbody-->
+		<div class="mui-content">
+			<div style="padding: 10px 10px;">
+				<!--mtab-->
+				<!--mui-segmented-control-inverted文字效果，默认是按钮效果，去掉这个属性即可看到-->
+				<div class="mui-segmented-control mui-segmented-control-inverted">
+				    <a class="mui-control-item mui-active" href="#item1">支出</a>
+				    <a class="mui-control-item" href="#item2">收入</a>
+				</div>
+			</div>
+			<div>
+				<div id="item1" class="mui-control-content mui-active">
+				    <ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<div>
+								<span class="mui-icon mui-icon-camera"></span>
+								<a id="value" class="mui-pull-right">￥0.00</a>
+							</div>
+							
+						</li>
+						<li class="mui-table-view-cell">
+							<div id>
+								<a id="value" class="mui-pull-left">分类</a>
+								<a id="value" class="mui-pull-right">其他杂项 > 其他支出</a>
+							</div>
+							
+						</li>
+						<li class="mui-table-view-cell">
+							<div>
+								<a id="value" class="mui-pull-left">账户</a>
+								<a id="value" class="mui-pull-right">其他(CNY)</a>
+							</div>							
+						</li>
+						<li class="mui-table-view-cell">
+							<div>
+								<a id="value" class="mui-pull-left">日期</a>
+								<a class="mui-pull-right">2016年12月12日 00:10</a>
+							</div>
+							
+						</li>
+					</ul>
+				</div>
+				<div id="item2" class="mui-control-content">
+				    <ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<div>
+								<span class="mui-icon mui-icon-camera"></span>
+								<a id="value" class="mui-pull-right">￥0.00</a>
+							</div>
+							
+						</li>
+						<li class="mui-table-view-cell">
+							<div id>
+								<a id="value" class="mui-pull-left">分类</a>
+								<a id="value" class="mui-pull-right">职业收入 > 工资收入</a>
+							</div>
+							
+						</li>
+						<li class="mui-table-view-cell">
+							<div>
+								<a id="value" class="mui-pull-left">账户</a>
+								<a id="value" class="mui-pull-right">其他(CNY)</a>
+							</div>							
+						</li>
+						<li class="mui-table-view-cell">
+							<div>
+								<a id="value" class="mui-pull-left">日期</a>
+								<a class="mui-pull-right">2016年12月12日 00:10</a>
+							</div>
+							
+						</li>
+					</ul>
+					</ul>
+				</div>
+			</div>
+			<div style="padding: 10px 10px;">
+				<button type="button" class="mui-btn mui-btn-blue">保存</button>
+				<button type="button" class="mui-btn mui-btn-outlined mui-btn-grey">存为模版</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/app/add.js" ></script>
+	</body>
+</html>

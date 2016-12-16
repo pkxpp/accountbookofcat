@@ -14,7 +14,8 @@
 			"js/city.data-3.js"
 		],
 		"refer": [
-			"views/menu.html"
+			"views/menu.html",
+			"views/add.html"
 		]
 	},
 	"views/menu.html": {
@@ -37,6 +38,12 @@
 			"libs/echarts-all.js",
 			"js/app/index.js",
 			"js/app/echarts.js"
+		]
+	},
+	"views/add.html": {
+		"resources": [
+			"js/app/add.js",
+			"css/app/add.css"
 		]
 	}
 }

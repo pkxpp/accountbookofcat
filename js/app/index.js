@@ -25,7 +25,7 @@ mui.plusReady(function(){
 	menu = mui.preload(menuoptions);
 //	$(document).off('tap', '.btnMenu').on('tap', '.btnAdd', opMenu);
 //	document.on('tap', '.btnAdd', tstAddData);
-	mui('.mui-plus').on('tap', '.btnAdd', tstAddData);
+//	mui('.mui-plus').on('tap', '.btnAdd', tstAddData);
 	mui('.mui-bar').on('tap', '.btnMenu', opMenu);
 	main.addEventListener('maskClick', opMenu);
 	mui.menu = opMenu;
@@ -104,7 +104,7 @@ function newaddEvent(){
 	console.log(selectType);	
 	
 	// 存数据库
-	add(selectType, 10);
+//	add(selectType, 10);
 }
 
 //////////////////////////////////////////////////////////////

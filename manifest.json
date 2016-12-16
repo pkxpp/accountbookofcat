@@ -207,7 +207,8 @@
 					"js/city.data-3.js"
 				],
 				"refer": [
-					"views/menu.html"
+					"views/menu.html",
+					"views/add.html"
 				],
 				"priority": 0
 			},
@@ -232,6 +233,14 @@
 					"libs/echarts-all.js",
 					"js/app/index.js",
 					"js/app/echarts.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"views/add.html": {
+				"resources": [
+					"js/app/add.js",
+					"css/app/add.css"
 				],
 				"refer": [],
 				"priority": 0
