@@ -5,7 +5,10 @@
 		<title>add</title>
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../css/app/add.css" />
+		
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -27,23 +30,32 @@
 				    <ul class="mui-table-view">
 						<li class="mui-table-view-cell">
 							<div>
-								<span class="mui-icon mui-icon-camera"></span>
-								<a id="value" class="mui-pull-right">￥0.00</a>
+								<span class="mui-icon mui-icon-camera mui-pull-left"></span>
+								<!--<a id="value" class="mui-pull-right">￥0.00</a>-->
+									<input id="money" class="mui-pull-right" type="text" placeholder="￥0.00"></input>
 							</div>
 							
 						</li>
 						<li class="mui-table-view-cell">
-							<div id>
+							分类
+							<button id='showPayClassifyPicker' type="button" class="mui-btn">
+								其他杂项 > 其他支出
+							</button>
+							<!--<div id>
 								<a id="value" class="mui-pull-left">分类</a>
 								<a id="value" class="mui-pull-right">其他杂项 > 其他支出</a>
-							</div>
+							</div>-->
 							
 						</li>
 						<li class="mui-table-view-cell">
-							<div>
+							账户
+							<button id='showAccountClassifyPicker' type="button" class="mui-btn">
+								其他(CNY)
+							</button>
+							<!--<div>
 								<a id="value" class="mui-pull-left">账户</a>
 								<a id="value" class="mui-pull-right">其他(CNY)</a>
-							</div>							
+							</div>							-->
 						</li>
 						<li class="mui-table-view-cell">
 							<div>
@@ -64,11 +76,15 @@
 							
 						</li>
 						<li class="mui-table-view-cell">
+							<!--Item 1
+							<button type="button" class="mui-btn">
+								Button
+							</button>-->
 							<div id>
 								<a id="value" class="mui-pull-left">分类</a>
 								<a id="value" class="mui-pull-right">职业收入 > 工资收入</a>
 							</div>
-							
+							<!--<button id='showCityPicker' class="mui-btn mui-btn-block" type='button'>二级联动示例 ...</button>-->
 						</li>
 						<li class="mui-table-view-cell">
 							<div>
@@ -93,6 +109,10 @@
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<script src="../js/app/classify.data.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="../js/app/add.js" ></script>
+		
 	</body>
 </html>

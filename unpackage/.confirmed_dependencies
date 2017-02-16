@@ -43,7 +43,15 @@
 	"views/add.html": {
 		"resources": [
 			"js/app/add.js",
-			"css/app/add.css"
+			"css/app/add.css",
+			"js/app/city.data.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.picker.js",
+			"js/mui.poppicker.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
 		]
 	}
 }

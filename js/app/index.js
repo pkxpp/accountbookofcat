@@ -299,6 +299,23 @@ function deleteTable()
 		
 	})
 }
+
+// 账户细类:
+function getAccountDetailName(ID)
+{
+	var arrName = [
+		"现金",				// 0: 现金,
+		"银行卡",			// 1: 银行卡,
+		"存折",				// 2: 存折,
+		"信用卡",			// 3: 信用卡,
+		"公积金",			// 4: 公积金,
+		"支付宝",			// 5: 支付宝,
+		"余额宝",			// 6: 余额宝,
+		"微信钱包"			// 7: 微信钱包
+	];
+	return arrName[ID];
+}
+
 /////////////////////////////////////////////////////////
 // test
 function tstPicker(){
@@ -459,20 +476,4 @@ function tstAddData()
 		var desc = arrData[i].desc;
 		insert(genre, detail, accounttGenre, accountDetail, value, desc);
 	}
-}
-
-// 账户细类:
-function getAccountDetailName(ID)
-{
-	var arrName = [
-		"现金",			// 0: 现金,
-		"银行卡",			// 1: 银行卡,
-		"存折",			// 2: 存折,
-		"信用卡",			// 3: 信用卡,
-		"公积金",			// 4: 公积金,
-		"支付宝",			// 5: 支付宝,
-		"余额宝",			// 6: 余额宝,
-		"微信钱包"			// 7: 微信钱包
-	];
-	return arrName[ID];
 }
