@@ -26,13 +26,13 @@
 				</div>
 			</div>
 			<div>
-				<div id="item1" class="mui-control-content mui-active">
+				<div id="itemOut" class="mui-control-content mui-active">
 				    <ul class="mui-table-view">
 						<li class="mui-table-view-cell">
 							<div>
 								<span class="mui-icon mui-icon-camera mui-pull-left"></span>
 								<!--<a id="value" class="mui-pull-right">￥0.00</a>-->
-									<input id="money" class="mui-pull-right" type="text" placeholder="￥0.00"></input>
+									<input id="inputMoney" class="mui-pull-right" type="text" placeholder="￥0.00"></input>
 							</div>
 							
 						</li>
@@ -58,15 +58,19 @@
 							</div>							-->
 						</li>
 						<li class="mui-table-view-cell">
-							<div>
+							日期
+							<button id='btnPickDate' type="button" class="mui-btn">
+								今日
+							</button>
+							<!--<div>
 								<a id="value" class="mui-pull-left">日期</a>
 								<a class="mui-pull-right">2016年12月12日 00:10</a>
-							</div>
+							</div>-->
 							
 						</li>
 					</ul>
 				</div>
-				<div id="item2" class="mui-control-content">
+				<div id="itemIn" class="mui-control-content">
 				    <ul class="mui-table-view">
 						<li class="mui-table-view-cell">
 							<div>
@@ -104,7 +108,7 @@
 				</div>
 			</div>
 			<div style="padding: 10px 10px;">
-				<button type="button" class="mui-btn mui-btn-blue">保存</button>
+				<button id="btnSaveValue" type="button" class="mui-btn mui-btn-blue">保存</button>
 				<button type="button" class="mui-btn mui-btn-outlined mui-btn-grey">存为模版</button>
 			</div>
 		</div>
